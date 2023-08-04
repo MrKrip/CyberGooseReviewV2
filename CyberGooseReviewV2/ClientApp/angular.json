@@ -132,5 +132,8 @@
       }
     }
   },
-  "defaultProject": "CyberGooseReviewV2"
+  "defaultProject": "CyberGooseReviewV2",
+  "cli": {
+    "analytics": "0c153a36-1623-4d14-86bd-35f973d8aae5"
+  }
 }
