@@ -1,8 +1,8 @@
 import { SubCategory } from "./sub-category";
 
 export interface Category {
-  Id: number;
-  Name: string;
+  id: number;
+  name: string;
   subCategories: SubCategory[];
-  Roles: string[];
+  roles: string[];
 }

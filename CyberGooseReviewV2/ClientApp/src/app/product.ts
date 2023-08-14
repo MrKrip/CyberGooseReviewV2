@@ -2,17 +2,17 @@ import { Category } from "./category";
 import { SubCategory } from "./sub-category";
 
 export interface Product {
-  Id: number;
-  CategoryId: number;
-  Category: Category;
-  SubCategories: SubCategory[];
-  Name: string;
-  Description: string;
-  YouTubeLink: string;
-  UserRating: number;
-  CriticRating: number;
-  CommonRating: number;
-  ProductPicture: any;
-  Year: number;
-  Country: string;
+  id: number;
+  categoryId: number;
+  category: Category;
+  subCategories: SubCategory[];
+  name: string;
+  description: string;
+  youTubeLink: string;
+  userRating: number;
+  criticRating: number;
+  commonRating: number;
+  productPicture: any;
+  year: number;
+  country: string;
 }

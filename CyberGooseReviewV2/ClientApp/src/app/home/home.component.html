@@ -2,13 +2,24 @@
   <h1 class="display-4">Cyber Goose Review Present</h1>
 </div>
 
+
 <div class="row g-0 border border-secondary border-3 position-relative" *ngFor="let Product of Products">
   <div class="col-md-3 mb-md-0 p-md-4">
-    <img src="data:image/*;base64,{{Product.ProductPicture}}" style="width:200px;height:200px;" class="figure-img img-fluid rounded" alt="...">
+    <img src="data:image/*;base64,{{Product.productPicture}}" style="width:200px;height:200px;" class="figure-img img-fluid rounded" alt="...">
   </div>
   <div class="col-md-6 p-4 ps-md-0">
-    <h5 class="mt-0">{{Product.Name}}</h5>
-    <div class="text-truncate-container">{{Product.Description}}</div>
-    <a class="stretched-link" [routerLink]="'/fetch-data'">More details...</a>
+    <h5 class="mt-0">{{Product.name}}</h5>
+    <p>
+      <b> User Rating:</b> {{Product.userRating}} / 100
+    </p>
+    <p>
+      <b>Critic Rating:</b> {{Product.criticRating}} / 100
+    </p>
+    <p>
+      <b>Common Rating:</b> {{Product.commonRating}} / 100
+    </p>
+      <div class="text-truncate-container">{{Product.description}}</div>
+
+    <a class="stretched-link">More details...</a>
   </div>
 </div>
