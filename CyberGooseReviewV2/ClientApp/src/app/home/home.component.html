@@ -2,6 +2,11 @@
   <h1 class="display-4">Cyber Goose Review Present</h1>
 </div>
 
+<div class="d-flex justify-content-center" *ngIf="Loader">
+  <div class="spinner-border" style="width: 5rem; height: 5rem;" role="status">
+    <span class="sr-only"></span>
+  </div>
+</div>
 
 <div class="row g-0 border border-secondary border-3 position-relative" *ngFor="let Product of Products">
   <div class="col-md-3 mb-md-0 p-md-4">
