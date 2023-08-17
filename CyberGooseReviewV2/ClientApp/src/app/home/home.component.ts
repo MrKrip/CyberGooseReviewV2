@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Product } from '../product';
+import { ProductService } from '../product.service';
 
 @Component({
   selector: 'app-home',
@@ -9,11 +9,16 @@ import { Product } from '../product';
 export class HomeComponent {
   title = "Home Page";
   public Products: Product[] = [];
+  private NumberOfProd: number = 10;
 
-  constructor(http: HttpClient) {
-    http.get<Product[]>('https://localhost:7176/Home').subscribe(result => {
-      this.Products = result;
-    }, error => console.error(error));
+  constructor(private productService: ProductService) {
+
+  }
+
+  ngOnInit() {
+    this.productService.getProducts<Product>().subscribe(result => {
+      this.Products = result.reverse().slice(0, this.NumberOfProd);
+    });
   }
 
 }

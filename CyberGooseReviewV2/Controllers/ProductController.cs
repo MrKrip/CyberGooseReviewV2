@@ -10,18 +10,18 @@ using System;
 namespace CyberGooseReviewV2.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
-    public class HomeController : Controller
+    public class ProductController : Controller
     {
-        private DefaultContext db;
+        private readonly DefaultContext db;
 
-        public HomeController(DefaultContext db)
+        public ProductController(DefaultContext db)
         {
             this.db = db;
         }
 
         // GET: HomeController
         [HttpGet]
+        [Route("Products")]
         public IEnumerable<ProductModel> Get()
         {
             var config = new MapperConfiguration(cfg =>
