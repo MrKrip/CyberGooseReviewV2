@@ -6,7 +6,7 @@ import { ProductService } from '../product.service';
   selector: 'app-home',
   templateUrl: './home.component.html',
 })
-export class HomeComponent {
+export class HomeComponent{
   title = "Home Page";
   public Products: Product[] = [];
   private NumberOfProd: number = 10;

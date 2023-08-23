@@ -1,0 +1,73 @@
+<div class="d-flex justify-content-center" *ngIf="Loader">
+  <div class="spinner-border" style="width: 5rem; height: 5rem;" role="status">
+    <span class="sr-only"></span>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-md-4">
+    <img src="data:image/*;base64,{{product.productPicture}}" style="width:300px;height:400px;" class="figure-img img-fluid rounded" alt="...">
+    <a class="btn btn-primary" style="width:300px;">See all product reviews</a>
+  </div>
+  <div class="col-md-8">
+    <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+      <div class="col">
+        <div class="card mb-4 rounded-3 shadow-sm">
+          <div class="card-header py-3">
+            <h4 class="my-0 fw-normal">Critic Raiting</h4>
+          </div>
+        </div>
+        <div class="card-body">
+          <h1 class="card-title pricing-card-title">
+            {{product.criticRating}}
+            <small class="text-muted fw-light">/100</small>
+          </h1>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card mb-4 rounded-3 shadow-sm">
+          <div class="card-header py-3">
+            <h4 class="my-0 fw-normal">Common Raiting</h4>
+          </div>
+        </div>
+        <div class="card-body">
+          <h1 class="card-title pricing-card-title">
+            {{product.commonRating}}
+            <small class="text-muted fw-light">/100</small>
+          </h1>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card mb-4 rounded-3 shadow-sm">
+          <div class="card-header py-3">
+            <h4 class="my-0 fw-normal">User Raiting</h4>
+          </div>
+        </div>
+        <div class="card-body">
+          <h1 class="card-title pricing-card-title">
+            {{product.userRating}}
+            <small class="text-muted fw-light">/100</small>
+          </h1>
+        </div>
+      </div>
+    </div>
+    <div class="bg-light rounded-3">
+      <div class="">
+        <h1>{{product.name}}</h1>
+        <p><b>Country</b> : {{product.country}} </p>
+        <p><b>Year</b> : {{product.year}}</p>
+        <p><b>Category</b> : {{product.category.name}}</p>
+        <p>
+          <b>SubCategories</b> :
+          <a *ngFor="let subcat of product.subCategories">{{subcat.name}} </a>
+        </p>
+        <p><b>Description</b>: {{product.description}}</p>
+      </div>
+    </div>
+  </div>
+  <div class="ratio ratio-16x9">
+    <iframe src="{{product.youTubeLink}}" title="YouTube video" allowfullscreen></iframe>
+  </div>
+
+</div>

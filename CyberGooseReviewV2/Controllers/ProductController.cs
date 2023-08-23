@@ -19,7 +19,6 @@ namespace CyberGooseReviewV2.Controllers
             this.db = db;
         }
 
-        // GET: HomeController
         [HttpGet]
         [Route("Products")]
         public IEnumerable<ProductModel> Get()
@@ -50,5 +49,34 @@ namespace CyberGooseReviewV2.Controllers
             });
         }
 
+        [HttpGet]
+        [Route("product/{id}")]
+        public ProductModel Get(int id)
+        {
+            var config = new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<SubCategory, SubCategoryModel>();
+                cfg.CreateMap<Category, CategoryModel>();
+            });
+            var mapper = new Mapper(config);
+
+            return db.Products.Include(c => c.Category).Where(p => p.Id == id).Select(p => new ProductModel()
+            {
+                Id = p.Id,
+                Name = p.Name,
+                YouTubeLink = p.YouTubeLink,
+                Description = p.Description,
+                CategoryId = p.CategoryId,
+                Category = mapper.Map<CategoryModel>(p.Category),
+                CommonRating = p.CommonRating,
+                Country = p.Country,
+                CriticRating = p.CriticRating,
+                ProductPicture = p.ProductPicture,
+                UserRating = p.UserRating,
+                Year = p.Year,
+                SubCategories = db.ProductSubCategories.Include(sc => sc.SubCategory).Include(p => p.Product)
+                .Where(psc => psc.ProductId == p.Id).Select(psc => new SubCategoryModel() { Id = psc.Id, Name = db.SubCategories.FirstOrDefault(sc => sc.Id == psc.SubCategoryId).Name }).ToList()
+            }).FirstOrDefault();
+        }
     }
 }
