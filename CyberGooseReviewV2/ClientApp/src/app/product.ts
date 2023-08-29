@@ -8,7 +8,7 @@ export interface Product {
   subCategories: SubCategory[];
   name: string;
   description: string;
-  youTubeLink: string;
+  youTubeLink: string | null;
   userRating: number;
   criticRating: number;
   commonRating: number;
