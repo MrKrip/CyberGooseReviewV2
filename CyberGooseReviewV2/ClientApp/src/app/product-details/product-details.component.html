@@ -69,4 +69,20 @@
   <div class="ratio ratio-16x9" *ngIf="product.youTubeLink !== undefined && product.youTubeLink !== null">
     <iframe src="{{product.youTubeLink}}" title="YouTube video" allowfullscreen></iframe>
   </div>
+  <div class="border border-2 rounded-3" *ngFor="let review of reviews">
+    <img src="data:image/*;base64,{{review.userData.profilePicture}}" alt="CG" width="32" height="32" class="rounded-circle">
+    <a class="text-decoration-none">{{review.userData.userNick}} </a>: {{review.userData.roles.toString()}}
+    <div><label class="btn btn-lg btn-secondary">{{review.rating}}/10</label></div>
+
+    <div class="border border-3" style="min-height:200px;">
+      {{review.details}}
+    </div>
+
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+      <button type="submit" class="btn-primary me-2">Like</button>
+      <span class="text-success">{{review.likes}}</span>
+      <span class="text-danger">{{review.disLikes}}</span>
+      <button type="submit" class="btn-danger">Dislike</button>
+    </div>
+  </div>
 </div>

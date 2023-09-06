@@ -3,6 +3,8 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { Product } from '../product';
 import { ProductService } from '../product.service';
+import { Review } from '../review';
+import { ReviewService } from '../review.service';
 
 @Component({
   selector: 'app-product-details',
@@ -15,9 +17,10 @@ export class ProductDetailsComponent implements OnInit {
   public Loader: boolean = true;
   public HasYTLink: boolean = false;
   private id: number;
+  public reviews!: Review[];
   public console = console;
 
-  constructor(private productService: ProductService, activeRoute: ActivatedRoute, private sanitizer: DomSanitizer) {
+  constructor(private productService: ProductService, activeRoute: ActivatedRoute, private sanitizer: DomSanitizer, private reviewServise: ReviewService) {
     this.id = Number.parseInt(activeRoute.snapshot.params["id"]);
   }
 
@@ -31,6 +34,9 @@ export class ProductDetailsComponent implements OnInit {
             this.product.youTubeLink = this.sanitizer.sanitize(SecurityContext.RESOURCE_URL, this.sanitizer.bypassSecurityTrustResourceUrl(this.product.youTubeLink));
           }          
         });
+      this.reviewServise.getReviewsToProd<Review>(this.id).subscribe(result => {
+        this.reviews = result.reverse().slice(0, 10);
+      })
     }
   }
 }

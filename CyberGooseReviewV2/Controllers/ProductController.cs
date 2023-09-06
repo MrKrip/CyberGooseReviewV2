@@ -76,7 +76,7 @@ namespace CyberGooseReviewV2.Controllers
                 Year = p.Year,
                 SubCategories = db.ProductSubCategories.Include(sc => sc.SubCategory).Include(p => p.Product)
                 .Where(psc => psc.ProductId == p.Id).Select(psc => new SubCategoryModel() { Id = psc.Id, Name = db.SubCategories.FirstOrDefault(sc => sc.Id == psc.SubCategoryId).Name }).ToList()
-            }).FirstOrDefault();
+            }).First();
         }
     }
 }

@@ -4,18 +4,14 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class ProductService {
+export class ReviewService {
 
   private url: string = 'https://localhost:7176/';
 
   constructor(private http: HttpClient) {
   }
 
-  getProducts<T>() {
-    return this.http.get<T[]>(this.url + 'products');
-  }
-
-  getProduct<T>(id: number) {
-    return this.http.get<T>(this.url + 'product/' + id);
+  getReviewsToProd<T>(id: number) {
+    return this.http.get<T[]>(this.url + 'reviews/' + id);
   }
 }

@@ -12,6 +12,7 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { ProductService } from './product.service';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { ProductCommentsComponent } from './product-comments/product-comments.component';
+import { ReviewService } from './review.service';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
@@ -38,7 +39,7 @@ const appRoutes: Routes = [
     FormsModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [ProductService],
+  providers: [ProductService, ReviewService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
